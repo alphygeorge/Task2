@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/head') %>
+        <title>Task</title>
+        <style>
+            /* CSS for rounded rectangles */
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            li {
+                background-color: #393737ba;
+                border-radius: 10px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            li strong {
+                font-weight: bold;
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .button {
+                padding: 5px 10px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .button.delete-btn {
+                background-color: red;
+                /* Make delete button red */
+            }
+
+            .edit-container {
+                display: none;
+                /* Initially hide the edit container */
+            }
+
+            textarea {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        </style>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+        <div class="container mt-4">
+            <h1>Tasks</h1>
+            <ul>
+                <% tasks.forEach(task=> { %>
+                    <li>
+                        <strong>Name:</strong>
+                        <%= task.name %><br>
+                            <strong>Content:</strong>
+                            <%= task.content %><br>
+                                <div class="button-container">
+                                    <form action="/task/edit" method="POST">
+                                        <input type="hidden" name="id" value="<%= task.id %>">
+                                        <div class="edit-container">
+                                            <label>Task</label>
+                                            <textarea id="editTextArea_<%= task.id %>" name="newTask" rows="4"
+                                                cols="50"></textarea>
+                                            <button class="button ok-btn">OK</button>
+                                            <button class="button cancel-btn">Cancel</button>
+                                        </div>
+                                    </form>
+                                    <button class="button edit-btn">Edit</button>
+                                    <form action="/task/delete" method="POST">
+                                        <input type="hidden" name="id" value="<%= task.id %>">
+                                        <button class="button delete-btn" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
+
+        <%- include('./partials/scripts') %>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const editButtons = document.querySelectorAll('.edit-btn');
+                    editButtons.forEach(button => {
+                        button.addEventListener('click', function () {
+                            const editContainer = this.parentElement.querySelector('.edit-container');
+                            editContainer.style.display = 'block';
+                        });
+                    });
+
+                    const cancelButtons = document.querySelectorAll('.cancel-btn');
+                    cancelButtons.forEach(button => {
+                        button.addEventListener('click', function (event) {
+                            event.preventDefault();
+                            const editContainer = this.parentElement;
+                            editContainer.style.display = 'none';
+                        });
+                    });
+                });
+            </script>
+</body>
+
+</html>

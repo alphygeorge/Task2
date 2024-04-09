@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cookiePaser = require("cookie-parser");
 
 const userRoute = require("./routes/user");
+const taskRoute = require("./routes/task");
 
 
 const {
@@ -36,6 +37,7 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/user", userRoute);
+app.use("/task", taskRoute);
 
 
 app.listen(PORT, () => console.log(`Server Started at PORT:${PORT}`));

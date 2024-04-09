@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+        <title>Task</title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+
+        <div class="container mt-4">
+            <form action="/task/add-new" method="post">
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="Name" name="Name" aria-describedby="fullName" />
+                </div>
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Your Message</label>
+                    <textarea class="form-control" name="Message" rows="6" placeholder="Your Message"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <%- include('./partials/scripts') %>
+
+</body>
+
+</html>
