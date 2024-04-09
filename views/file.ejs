@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+        <title>Homepage</title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+
+        <div class="container mt-5">
+            <form action="/file/add-file" method="POST" class="d-flex" enctype="multipart/form-data">
+
+                <input type="file" class="form-control" id="fileupload" name="fileupload"
+                    aria-describedby="fileupload" />
+                <input type="submit" value="Add File" class="btn btn-md btn-primary mx-2">
+            </form>
+
+
+
+
+
+
+
+
+        </div>
+
+
+        <%- include('./partials/scripts') %>
+</body>
+
+</html>

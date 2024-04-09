@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+        <title>Homepage</title>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+
+        <body>
+            <% if (downloadUrl) { %>
+                <p>Download link:</p>
+                <a href="<%= downloadUrl %>">
+                    <%= downloadUrl %>
+                </a>
+                <% } else { %>
+                    <p>No download link available.</p>
+                    <% } %>
+                        <a href="/file/viewfile" class="button">Back</a>
+
+                        <!-- Styling for the button -->
+                        <style>
+                            .button {
+                                display: inline-block;
+                                padding: 10px 20px;
+                                background-color: #007bff;
+                                /* Button color */
+                                color: #ffffff;
+                                /* Text color */
+                                text-decoration: none;
+                                /* Remove underline */
+                                border-radius: 5px;
+                                /* Rounded corners */
+                                border: none;
+                                /* Remove border */
+                                cursor: pointer;
+                                /* Cursor style on hover */
+                            }
+
+                            .button:hover {
+                                background-color: #0056b3;
+                                /* Change color on hover */
+                            }
+                        </style>
+
+        </body>
+        <%- include('./partials/scripts') %>
+</body>
+
+</html>
