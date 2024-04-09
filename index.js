@@ -6,6 +6,7 @@ const cookiePaser = require("cookie-parser");
 
 const userRoute = require("./routes/user");
 const taskRoute = require("./routes/task");
+const fileRoute = require("./routes/file");
 
 
 const {
@@ -26,6 +27,7 @@ app.set("views", path.resolve("./views"));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookiePaser());
 app.use(checkForAuthenticationCookie("token"));
+app.use(express.static(path.resolve("./public")));
 
 
 app.get("/", async (req, res) => {
@@ -38,6 +40,9 @@ app.get("/", async (req, res) => {
 
 app.use("/user", userRoute);
 app.use("/task", taskRoute);
+app.use("/file", fileRoute);
+
+
 
 
 app.listen(PORT, () => console.log(`Server Started at PORT:${PORT}`));

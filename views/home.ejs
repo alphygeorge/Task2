@@ -4,12 +4,29 @@
 <head>
     <%- include('./partials/head') %>
         <title>Homepage</title>
+        <style>
+            h1 {
+                background: linear-gradient(to bottom, #695353, #776262);
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            h1 {
+                text-align: center;
+                color: white;
+            }
+        </style>
 </head>
 
 <body>
     <%- include('./partials/nav') %>
 
-        <h1 style="text-align: center;">Select Menu for performing Tasks </h1>
+        <h1>Select Menu for performing Tasks</h1>
 
         <%- include('./partials/scripts') %>
 </body>
